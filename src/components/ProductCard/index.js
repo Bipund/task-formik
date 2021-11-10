@@ -13,7 +13,8 @@ export default function ProductCard(props) {
       productCode: product.productCode || "",
       productName: product.productName || "",
       productCategory: product.productCategory || null,
-      productExisting: product.productExisting
+      productExisting: product.productExisting,
+      productImages:product.productImages
     },
     enableReinitialize: true,
     validationSchema: productSchema,
@@ -38,7 +39,7 @@ export default function ProductCard(props) {
           <Grid component="div" container spacing={2}>
             <Grid component="div" item xl={10} lg={10} md={12} sm={12} xs={12}>
               <Grid component="div" container spacing={2}>
-                {/* {.map((data, index) => (
+                {formik.initialValues.productImages.map((data, index) => (
                   <Grid
                     key={data.id}
                     component="div"
@@ -49,9 +50,9 @@ export default function ProductCard(props) {
                     sm={12}
                     xs={12}
                   >
-                    <MediaCard productType={data} />
+                    <img style={{width:100,height:100}} src={data.imagesFile} />
                   </Grid>
-                ))} */}
+                ))}
               </Grid>
             </Grid>
           </Grid>

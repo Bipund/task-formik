@@ -19,19 +19,37 @@ const UploadImage = ({ processImages = () => {} }) => {
       image_name:image.name
     }));
 
-    // console.log(images);
     if(products.length!=0){
 
+        let new_product=products
+        let unique_code= products.map((data)=>{return data.productCode})
 
-      let new_product = products.map((data,j)=>{
-          
-      })
-              // let newb={}
-              // newb.id=1
-              // newb.imageFile=images[i].imageFile
-              // newb.imagesFileName=images[i].image_name
+            for(let j=0;j<images.length;j++){
+              if(unique_code.includes(images[j].productCode)){
+                new_product[unique_code.indexOf(images[j].productCode)].productImages.push({id:1,
+                  imagesFile:images[j].imageFile,
+                  imagesFileName:images[j].image_name})
+              }else{
+                new_product.push({
+                  productCode:images[j].productCode,
+                  productName:"",
+                  productCategory:null,
+                  productExisting:"",
+                  productImages: {
+                           id:1,
+                           imagesFile:images[j].imageFile,
+                           imagesFileName:images[j].image_name
+                          }
+                      
+                    
+               })
+              }
+            }
+           
 
       console.log(new_product,"new product")
+      processImages([]);
+
 
     }else{
       // const unique = [...new Set(data.map(item => item.group))]
