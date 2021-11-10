@@ -45,9 +45,7 @@ const UploadImage = ({ processImages = () => {} }) => {
                })
               }
             }
-           
 
-      console.log(new_product,"new product")
       processImages([]);
 
 
